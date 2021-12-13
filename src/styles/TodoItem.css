@@ -4,3 +4,8 @@
     margin:20px auto;
     padding: 5px;
 }
+.itemContent { font-family: 'Inder', sans-serif; 
+    font-size: 25px; 
+    color: #666;
+    text-align: left; 
+}

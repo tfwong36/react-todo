@@ -6,7 +6,7 @@ function TodoItem(props){
 
     return(
         <div className="todoitem box">
-            <p>{props.content}</p>
+            <p className="itemContent">{props.content}</p>
         </div>
     )
 }
