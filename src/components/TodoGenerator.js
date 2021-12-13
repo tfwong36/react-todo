@@ -1,4 +1,5 @@
 import { useState } from  "react";
+import "../styles/TodoGenerator.css"
 
 function TodoGenerator(props){
     const [content, setContent] = useState(0);
@@ -8,8 +9,8 @@ function TodoGenerator(props){
     }
     return(
         <div>
-            <input type="text" value={content} onChange={e => setContent(e.target.value)}></input>
-            <button onClick={addItem}>add</button>
+            <input className="input-style" type="text" value={content} onChange={e => setContent(e.target.value)}></input>
+            <button className="button-style" onClick={addItem}>add</button>
         </div>
     )
 }
