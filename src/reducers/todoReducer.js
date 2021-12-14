@@ -1,4 +1,4 @@
-import { DELETE_TODO_LIST, UPDATE_TODO_LIST} from "../constants/constants";
+import { DELETE_TODO_LIST, TOGGLE_ITEM, UPDATE_TODO_LIST} from "../constants/constants";
 const initState = { size: 0, todoList: []};
 const counterReducer = (state = initState, action) => {
     switch(action.type){
@@ -6,6 +6,11 @@ const counterReducer = (state = initState, action) => {
             return {...state, todoList: [...state.todoList, action.payload]};
         case DELETE_TODO_LIST:
             return {...state, todoList: state.todoList.filter(c=>c.ID!=action.payload)};
+        case TOGGLE_ITEM:
+            return {...state, todoList: state.todoList.map(function(obj) {
+                                                            obj.done= !obj.done;
+                                                            return obj;
+                                                        })};
         default: 
             return state;
     }

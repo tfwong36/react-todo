@@ -11,9 +11,9 @@ function TodoGenerator(props){
 
     function addItem(){
         if (content.length > 0)
-            dispatch({type:UPDATE_TODO_LIST, payload:{"content": content, "ID":size + 1,"status": "NotDone"}})
+            dispatch({type:UPDATE_TODO_LIST, payload:{"content": content, "ID":size + 1,"done": false}})
     }
-      
+
     return(
         <div>
             <input className="input-style" id="mytext" type="text" value={content} onChange={e => setContent(e.target.value)}></input>
