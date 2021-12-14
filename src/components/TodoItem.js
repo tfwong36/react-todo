@@ -15,8 +15,8 @@ function TodoItem(props){
     }
     return(
         <div className={props.status? "todoitem box done":"todoitem box"}onClick={handleToggleDone}>
-            <p className="itemContent">{props.content}</p>
-            <button className="button-delete" onClick={handleDeleteTodoList}>Delete</button>
+            <p className="itemContent">{props.content} <button className="button-delete" onClick={handleDeleteTodoList}>Delete</button></p>
+            
         </div>
     )
 }
