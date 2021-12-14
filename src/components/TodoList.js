@@ -1,19 +1,22 @@
-import TodoItem from "./TodoItem"
 import { useState } from "react";
 import TodoGroup from "./TodoGroup"
 import TodoGenerator from "./TodoGenerator"
+import { useDispatch } from "react-redux";
 import "../styles/TodoList.css"
+import { UPDATE_SIZE, UPDATE_TODO_LIST } from "../constants/constants";
 
 function TodoList(){
     const [todoList, setTodoList] = useState([]);
+    const dispatch = useDispatch();
     function updateTodoList(newTodo){
-        setTodoList(oldTodoList=>[...oldTodoList, newTodo]);
+        dispatch({type:UPDATE_SIZE, payload: 1})
+        dispatch({type:UPDATE_TODO_LIST, payload: newTodo})
     }
     return(
         <div className="TodoList">
             <p  className="title">✔️ Todo List ✔️</p>
-            <TodoGroup todoList={todoList}></TodoGroup>
-            <TodoGenerator updateTodoList={updateTodoList}></TodoGenerator>
+            <TodoGroup></TodoGroup>
+            <TodoGenerator></TodoGenerator>
         </div>
     )
 }
