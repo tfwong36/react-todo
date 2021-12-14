@@ -9,7 +9,6 @@ function TodoList(){
     const [todoList, setTodoList] = useState([]);
     const dispatch = useDispatch();
     function updateTodoList(newTodo){
-        dispatch({type:UPDATE_SIZE, payload: 1})
         dispatch({type:UPDATE_TODO_LIST, payload: newTodo})
     }
     return(
