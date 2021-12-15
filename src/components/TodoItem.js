@@ -1,3 +1,4 @@
+import { CloseSquareTwoTone } from "@ant-design/icons/lib/icons";
 import { useDispatch } from "react-redux";
 import { deleteTodo, toggleTodoDone } from "../apis/todos";
 import { DELETE_TODO_LIST, TOGGLE_ITEM } from "../constants/constants";
@@ -8,7 +9,7 @@ function TodoItem(props){
     function handleDeleteTodoList(event){
         event.stopPropagation();
         deleteTodo(props.id).then((response) => {
-            dispatch({type:DELETE_TODO_LIST, payload: response.data.id});
+            dispatch({type:DELETE_TODO_LIST, payload: response.data.ID});
         })
     }
 
@@ -19,7 +20,7 @@ function TodoItem(props){
     }
     return(
         <div className={props.status? "todoitem box done":"todoitem box"} onClick={handleToggleDone}>
-            <p className="itemContent">{props.content} <button className="button-delete" onClick={handleDeleteTodoList}>X</button></p>
+            <p className="itemContent">{props.content} <CloseSquareTwoTone className="button-delete" onClick={handleDeleteTodoList} /></p>
         </div>
     )
 }

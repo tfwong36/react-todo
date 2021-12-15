@@ -17,7 +17,6 @@ function TodoList(){
     return(
         <div>
             <div className="TodoList">
-                <p  className="title">✔️ Todo List ✔️</p>
                 <TodoGroup></TodoGroup>
                 <TodoGenerator></TodoGenerator>
             </div>

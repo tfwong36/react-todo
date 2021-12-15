@@ -9,6 +9,8 @@ import {
   useParams
 } from "react-router-dom";
 import TodoGroupStatus from './components/TodoGroupStatus';
+import { Menu } from 'antd';
+import Title from 'antd/lib/typography/Title';
 
 function App() {
   return (
@@ -21,17 +23,17 @@ function App() {
                 <div class="layer"></div>
             </div>
         <div>
-          <ul className='menu'>
-            <span class="btn">
+          <Menu mode="horizontal" className='menu'>
+            <Menu.Item>
               <Link to="/">Home</Link>
-            </span>
-            <span class="btn">
+            </Menu.Item>
+            <Menu.Item>
               <Link to="/done">Done</Link>
-            </span> 
-            <span class="btn">
+            </Menu.Item> 
+            <Menu.Item>
               <Link to="/undone">Undone</Link>
-            </span >
-          </ul>
+            </Menu.Item >
+          </Menu>
           <Switch>
             <Route exact path="/done">
               <Done />
@@ -50,13 +52,17 @@ function App() {
 }
 function Home() {
   return (
+    <div>
+    <Title level={1} type="warning">✔️ Todo List ✔️</Title>
     <TodoList></TodoList>
+
+    </div>
   );  
 }
 function Done() {
   return (
   <div>
-    <p className='title'>💖Done List💖</p>
+  <Title level={1} type="warning">💖Done List💖</Title>
     <TodoGroupStatus status={true}></TodoGroupStatus>
   </div>
   );
@@ -65,7 +71,7 @@ function Done() {
 function Undone() {
   return (
   <div>
-    <p className='title'>📅Undone List📅</p>
+  <Title level={1} type="warning">📅Undone List📅</Title>
     <TodoGroupStatus status={false}></TodoGroupStatus>
   </div>
   );

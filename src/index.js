@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import todoReducer from './reducers/todoReducer';
+import 'antd/dist/antd.css';
 
 
 const store = createStore(

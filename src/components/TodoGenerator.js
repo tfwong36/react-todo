@@ -4,6 +4,7 @@ import { UPDATE_TODO_LIST } from "../constants/constants";
 import "../styles/TodoGenerator.css"
 import { v4 as uuidv4 } from 'uuid';
 import { postTodo } from "../apis/todos";
+import { Button, Input } from "antd";
 
 function TodoGenerator(){
     const [content, setContent] = useState("");
@@ -23,8 +24,8 @@ function TodoGenerator(){
 
     return(
         <div>
-            <input className="input-style" type="text" value={content} onChange={e => setContent(e.target.value)} placeholder="input a new todo item here"></input>
-            <button className="button-style" onClick={addItem}>add</button>
+            <Input type="text" value={content} onChange={e => setContent(e.target.value)} placeholder="input a new todo item here"></Input>
+            <Button type="primary" size="large" onClick={addItem}>add</Button>
         </div>
     )
 }
