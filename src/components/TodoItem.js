@@ -1,10 +1,17 @@
-import { CloseSquareTwoTone } from "@ant-design/icons/lib/icons";
+import { CloseSquareTwoTone, EditTwoTone } from "@ant-design/icons/lib/icons";
+import { Button, Input } from "antd";
+import TextArea from "antd/lib/input/TextArea";
+import Modal from "antd/lib/modal/Modal";
+
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo, toggleTodoDone } from "../apis/todos";
-import { DELETE_TODO_LIST, TOGGLE_ITEM } from "../constants/constants";
+import { deleteTodo, udpateTodo } from "../apis/todos";
+import { DELETE_TODO_LIST, UDPATE_ITEM } from "../constants/constants";
 import "../styles/TodoItem.css"
 
 function TodoItem(props){
+    const [isModalVisible, setModalVisible] = useState(false);
+    const [modifiedContent, setmodifiedContent] = useState("");
     const dispatch = useDispatch();
     function handleDeleteTodoList(event){
         event.stopPropagation();
@@ -14,14 +21,41 @@ function TodoItem(props){
     }
 
     function handleToggleDone(){
-        toggleTodoDone(props.id, props.status).then((response) => {
-            dispatch({type:TOGGLE_ITEM, payload: response.data});
+        udpateTodo(props.id, {"done":!props.status}).then((response) => {
+            dispatch({type:UDPATE_ITEM, payload: response.data});
         })
     }
+
+    function displayModal(event){
+        event.stopPropagation();
+        setmodifiedContent(props.content);
+        setModalVisible({isModalVisible: true});
+    }
+    
+    const handleOk = () => {
+        udpateTodo(props.id, {"content": modifiedContent}).then((response) => {
+            dispatch({type:UDPATE_ITEM, payload: response.data});
+        })
+        setModalVisible(false);
+    };
+
+    const handleCancel = () => {
+        setModalVisible(false);
+    };
+
     return(
-        <div className={props.status? "todoitem box done":"todoitem box"} onClick={handleToggleDone}>
-            <p className="itemContent">{props.content} <CloseSquareTwoTone className="button-delete" onClick={handleDeleteTodoList} /></p>
+        <div>
+            <Modal title="Modify Todo Item Content" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                <TextArea value={modifiedContent} onChange={e => setmodifiedContent(e.target.value)}></TextArea>
+            </Modal>
+            <div className={props.status? "todoitem box done":"todoitem box"} onClick={handleToggleDone}>
+                <p className="itemContent">{props.content} 
+                    <EditTwoTone className="button-delete" onClick={displayModal}/>
+                    <CloseSquareTwoTone className="button-delete" onClick={handleDeleteTodoList} />
+                </p>
+            </div>
         </div>
     )
 }
+
 export default TodoItem;
