@@ -6,9 +6,11 @@
 }
 .itemContent { font-family: 'Inder', sans-serif; 
     font-size: 25px; 
-    color: #666;
+    color: rgb(255, 255, 255);
     text-align: left; 
 }
 .done{
     text-decoration:line-through;
+    background-color: gray;
+    opacity: 80%;
 }

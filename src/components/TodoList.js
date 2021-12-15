@@ -12,10 +12,19 @@ function TodoList(){
         dispatch({type:UPDATE_TODO_LIST, payload: newTodo})
     }
     return(
-        <div className="TodoList">
-            <p  className="title">✔️ Todo List ✔️</p>
-            <TodoGroup></TodoGroup>
-            <TodoGenerator></TodoGenerator>
+        <div>
+            <div class="bg"></div>
+            <div class="star-field">
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+            </div>
+            
+            <div className="TodoList">
+                <p  className="title">✔️ Todo List ✔️</p>
+                <TodoGroup></TodoGroup>
+                <TodoGenerator></TodoGenerator>
+            </div>
         </div>
     )
 }
