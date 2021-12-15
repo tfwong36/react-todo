@@ -7,16 +7,16 @@ function TodoItem(props){
     const dispatch = useDispatch();
     function handleDeleteTodoList(event){
         event.stopPropagation();
-        dispatch({type:DELETE_TODO_LIST, payload: props.id});
         deleteTodo(props.id).then((response) => {
+            dispatch({type:DELETE_TODO_LIST, payload: props.id});
             console.log("Deleted");
             console.log(response);
         })
     }
 
     function handleToggleDone(){
-        dispatch({type:TOGGLE_ITEM, payload: props.id});
         toggleTodoDone(props.id, props.status).then((response) => {
+            dispatch({type:TOGGLE_ITEM, payload: props.id});
             console.log("Toggled");
             console.log(response);
         })
