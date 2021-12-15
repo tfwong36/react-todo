@@ -2,13 +2,11 @@ import { useState } from  "react";
 import { useDispatch } from "react-redux";
 import { UPDATE_TODO_LIST } from "../constants/constants";
 import "../styles/TodoGenerator.css"
-import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 
-function TodoGenerator(props){
+function TodoGenerator(){
     const [content, setContent] = useState("");
     const dispatch = useDispatch();
-    const size = useSelector(state => state.todoList).length
 
     function addItem(){
         if (content.length > 0)
@@ -17,8 +15,8 @@ function TodoGenerator(props){
 
     return(
         <div>
-            <input className="input-style" id="mytext" type="text" value={content} onChange={e => setContent(e.target.value)} placeholder="input a new todo item here"></input>
-            <button className="button-style" id="mybtn" onClick={addItem}>add</button>
+            <input className="input-style" type="text" value={content} onChange={e => setContent(e.target.value)} placeholder="input a new todo item here"></input>
+            <button className="button-style" onClick={addItem}>add</button>
         </div>
     )
 }
