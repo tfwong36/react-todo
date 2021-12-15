@@ -33,13 +33,13 @@ function App() {
             </span >
           </ul>
           <Switch>
-            <Route path="/done">
+            <Route exact path="/done">
               <Done />
             </Route>
-            <Route path="/undone">
+            <Route exact path="/undone">
               <Undone />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <Home />
             </Route>
           </Switch>

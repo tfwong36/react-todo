@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { deleteTodo, toggleTodoDone } from "../apis/todos";
 import { DELETE_TODO_LIST, TOGGLE_ITEM } from "../constants/constants";
 import "../styles/TodoItem.css"
 
@@ -6,11 +7,19 @@ function TodoItem(props){
     const dispatch = useDispatch();
     function handleDeleteTodoList(event){
         event.stopPropagation();
-        dispatch({type:DELETE_TODO_LIST, payload: props.id})
+        dispatch({type:DELETE_TODO_LIST, payload: props.id});
+        deleteTodo(props.id).then((response) => {
+            console.log("Deleted");
+            console.log(response);
+        })
     }
 
     function handleToggleDone(){
-        dispatch({type:TOGGLE_ITEM, payload: props.id})
+        dispatch({type:TOGGLE_ITEM, payload: props.id});
+        toggleTodoDone(props.id, props.status).then((response) => {
+            console.log("Toggled");
+            console.log(response);
+        })
     }
     return(
         <div className={props.status? "todoitem box done":"todoitem box"} onClick={handleToggleDone}>

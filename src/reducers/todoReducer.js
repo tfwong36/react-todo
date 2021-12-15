@@ -1,4 +1,4 @@
-import { DELETE_TODO_LIST, TOGGLE_ITEM, UPDATE_TODO_LIST} from "../constants/constants";
+import { BUILD_TODOLIST, DELETE_TODO_LIST, TOGGLE_ITEM, UPDATE_TODO_LIST} from "../constants/constants";
 
 const initState = { todoList: []};
 
@@ -14,6 +14,8 @@ const counterReducer = (state = initState, action) => {
                                                                 todo.done = !todo.done;
                                                             return todo;
                                                         })};
+        case BUILD_TODOLIST:
+            return {...state, todoList:action.payload}
         default: 
             return state;
     }
