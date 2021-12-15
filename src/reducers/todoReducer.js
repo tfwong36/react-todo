@@ -10,8 +10,8 @@ const counterReducer = (state = initState, action) => {
             return {...state, todoList: state.todoList.filter(todo=>todo.ID!==action.payload)};
         case TOGGLE_ITEM:
             return {...state, todoList: state.todoList.map(function(todo) {
-                                                            if (todo.ID === action.payload)
-                                                                todo.done = !todo.done;
+                                                            if (todo.ID === action.payload.ID)
+                                                                return action.payload;
                                                             return todo;
                                                         })};
         case BUILD_TODOLIST:

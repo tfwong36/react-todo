@@ -11,7 +11,11 @@ export const postTodo = (item) => {
 export const deleteTodo = (id) => {
     return todoAPI.delete("/todos/" + id);
 }
-
+// PUT二合一
 export const toggleTodoDone = (id, done) => {
     return todoAPI.put("/todos/" + id, {"done":!done});
+}
+
+export const udpateTodoContent = (id, content) => {
+    return todoAPI.put("/todos/" + id, {"content":content});
 }
