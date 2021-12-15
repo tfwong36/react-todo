@@ -12,11 +12,11 @@ function TodoGenerator(){
     function addItem(){
         if (content.length > 0)
         {
-            let data = {"content": content, "ID":uuidv4(),"done": false};
-            dispatch({type:UPDATE_TODO_LIST, payload: data})
+            let data = {"content": content, "done": false};
             postTodo(data).then((response) => {
                 console.log("Posted");
                 console.log(response);
+                dispatch({type:UPDATE_TODO_LIST, payload: response.data})
             })
         }
     }
