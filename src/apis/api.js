@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const todoAPI = axios.create({
-    baseURL: 'https://61b9880c38f69a0017ce609f.mockapi.io'
+    baseURL: 'http://localhost:8080'
 });
 
 export default todoAPI;

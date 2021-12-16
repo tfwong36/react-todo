@@ -7,10 +7,10 @@ const counterReducer = (state = initState, action) => {
         case UPDATE_TODO_LIST:
             return {...state, todoList: [...state.todoList, action.payload]};
         case DELETE_TODO_LIST:
-            return {...state, todoList: state.todoList.filter(todo=>todo.ID!==action.payload)};
+            return {...state, todoList: state.todoList.filter(todo=>todo.id!==action.payload)};
         case UDPATE_ITEM:
-            return {...state, todoList: state.todoList.map(function(todo) {
-                                                            if (todo.ID === action.payload.ID)
+            return {...state, todoList: state.todoList.map((todo) => {
+                                                            if (todo.id === action.payload.id)
                                                                 return action.payload;
                                                             return todo;
                                                         })};

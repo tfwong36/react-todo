@@ -1,13 +1,11 @@
 import { CloseSquareTwoTone, EditTwoTone } from "@ant-design/icons/lib/icons";
-import { Button, Input } from "antd";
-import TextArea from "antd/lib/input/TextArea";
-import Modal from "antd/lib/modal/Modal";
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo, udpateTodo } from "../apis/todos";
 import { DELETE_TODO_LIST, UDPATE_ITEM } from "../constants/constants";
 import "../styles/TodoItem.css"
+import TextArea from "antd/lib/input/TextArea";
+import Modal from "antd/lib/modal/Modal";
 
 function TodoItem(props){
     const [isModalVisible, setModalVisible] = useState(false);
@@ -21,6 +19,8 @@ function TodoItem(props){
     }
 
     function handleToggleDone(){
+        console.log('hiiiii');
+        console.log(props.id);
         udpateTodo(props.id, {"done":!props.status}).then((response) => {
             dispatch({type:UDPATE_ITEM, payload: response.data});
         })
@@ -45,7 +45,7 @@ function TodoItem(props){
 
     return(
         <div>
-            <Modal title="Modify Todo Item Content" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+            <Modal id={"mymodal"} title="Modify Todo Item Content" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                 <TextArea value={modifiedContent} onChange={e => setmodifiedContent(e.target.value)}></TextArea>
             </Modal>
             <div className={props.status? "todoitem box done":"todoitem box"} onClick={handleToggleDone}>

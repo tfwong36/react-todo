@@ -17,20 +17,20 @@ function App() {
     <Router>
       <div className="App">
       <div className="bg"></div>
-            <div class="star-field">
-                <div class="layer"></div>
-                <div class="layer"></div>
-                <div class="layer"></div>
+            <div className="star-field">
+                <div className="layer"></div>
+                <div className="layer"></div>
+                <div className="layer"></div>
             </div>
         <div>
-          <Menu mode="horizontal" className='menu'>
-            <Menu.Item>
+          <Menu mode="horizontal" theme="dark" className='menu'>
+            <Menu.Item key="1">
               <Link to="/">Home</Link>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item key="2">
               <Link to="/done">Done</Link>
             </Menu.Item> 
-            <Menu.Item>
+            <Menu.Item key="3">
               <Link to="/undone">Undone</Link>
             </Menu.Item >
           </Menu>
