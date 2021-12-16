@@ -14,7 +14,7 @@ function TodoItem(props){
     function handleDeleteTodoList(event){
         event.stopPropagation();
         deleteTodo(props.id).then((response) => {
-            dispatch({type:DELETE_TODO_LIST, payload: response.data.ID});
+            dispatch({type:DELETE_TODO_LIST, payload: response.data.id});
         })
     }
 
